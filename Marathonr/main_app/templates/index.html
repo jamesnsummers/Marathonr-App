@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Marathonr</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'materialize.min.css' %}" / />
+  </head>
+  <body>
+    <h1>Marathonr</h1>
+    <hr />
+    {% for movie in movies %}
+      <p>Title: {{ movie.title }}</p>
+      <p>Theatre: {{ movie.theatre}}</p>
+      <hr />
+    {% endfor %}
+    <footer>All Rights Reserved, Marathonr 2017</footer>
+  </body>
+ </html>
