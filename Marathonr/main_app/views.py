@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
+"""views file for main_app"""
 from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+def index(request):
+    """index function to show or GET all"""
+    return HttpResponse('<h1>Hello Cinefiles!</h1>')
