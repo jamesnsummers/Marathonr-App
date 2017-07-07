@@ -4,15 +4,23 @@
   <head>
 	<title>Marathonr</title>
   <link rel="stylesheet" type="text/css" href="{% static 'materialize.min.css' %}" / />
+  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" / />
   </head>
   <body>
     <h1>Marathonr</h1>
     <hr />
     {% for movie in movies %}
-      <p>Title: {{ movie.title }}</p>
-      <p>Theatre: {{ movie.theatre}}</p>
-      <hr />
+  	  <p>Title: {{ movie.title }}</p>
+      <p>Theatre: {{ movie.theatre }}</p>
+    	{% if movie.showtimes %}
+        <p>Showtimes: {{ movie.showtimes}}</p>
+    	{% else %}
+        <p>Showtimes: Unknown</p>
+    	{% endif%}
+  	  <hr />
     {% endfor %}
     <footer>All Rights Reserved, Marathonr 2017</footer>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
   </body>
  </html>
