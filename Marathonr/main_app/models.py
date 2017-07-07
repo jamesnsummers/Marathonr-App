@@ -2,7 +2,7 @@
 from django.db import models
 
 class Movie(models.Model):
-    """Movie model"""
+    """this is the Movie model"""
     title = models.CharField(max_length=50)
     theatre = models.CharField(max_length=50)
     showtimes = models.CharField(max_length=50)

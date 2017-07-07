@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
+"""admin file for main_app"""
 from django.contrib import admin
+from .models import Movie
 
-# Register your models here.
+admin.site.register(Movie)
