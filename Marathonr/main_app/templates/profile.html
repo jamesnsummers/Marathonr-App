@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h1>{{ username }}'s collection:</h1>
+
+{% for movie in movies %}
+<a href="/{{movie.id}}">
+  <h3>{{ movie.title }}</h3>
+</a>
+
+{% endfor %}
+
+{% endblock %}

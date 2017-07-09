@@ -1,30 +1,26 @@
+{% extends 'base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-  <head>
-	<title>Marathonr</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'materialize.min.css' %}" / />
-  <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" / />
-  </head>
-  <body>
-    <h1>Marathonr</h1>
-    <hr />
-    <!-- need to figure out how to show the data i'm getting from the query_tmsapi
-    {{film}}?? -->
-    <hr />
-    {% for movie in movies %}
-  	  <p>Title: {{ movie.title }}</p>
-      <p>Theatre: {{ movie.theatre }}</p>
-    	{% if movie.showtimes %}
-        <p>Showtimes: {{ movie.showtimes}}</p>
-    	{% else %}
-        <p>Showtimes: Unknown</p>
-    	{% endif%}
-      <p>Rating: {{movie.ratings_code}}
-  	  <hr />
-    {% endfor %}
-    <footer>All Rights Reserved, Marathonr 2017</footer>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/materialize.min.js' %}"></script>
-  </body>
- </html>
+
+{% block content %}
+{% if user.is_authenticated %}
+  {% for movie in movies %}
+    <a href="/{{movie.id}}">
+      <p>Name: {{ movie.title }}</p>
+    </a>
+    <a href="/user/{{movie.user.username}}"
+      <p>Seen By: {{movie.user.username }}</p>
+    </a>
+  	{% if movie.showtimes %}
+      <p>Showtimes: {{ movie.showtimes}}</p>
+  	{% else %}
+      <p>Showtimes: Unknown</p>
+  	{% endif%}
+    <p>Rating: {{movie.ratings_code}}
+	  <hr />
+  {% endfor %}
+  {% else %}
+      <p>Please use the links above to login or sign up to use Marathonr</p>
+{% endif %}
+
+
+{% endblock %}
