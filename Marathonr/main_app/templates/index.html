@@ -4,24 +4,23 @@
 {% block content %}
 {% if user.is_authenticated %}
   {% for movie in movies %}
-    <a href="/{{movie.id}}">
-      <p>Name: {{movie.title}}</p>
-    </a>
-    <a href="/user/{{movie.user.username}}"
-      <p>Seen By: {{movie.user.username}}</p>
-    </a>
-  	{% if movie.showtimes %}
-      <p>Showtimes: {{movie.showtimes}}</p>
-  	{% else %}
-      <p>Showtimes: Unknown</p>
-  	{% endif%}
-    <p>Tickets: {{movie.ticketURI}}
-    <p>Rating: {{movie.ratings_code}}
-	  <hr />
-  {% endfor %}
-  {% else %}
-      <p>Please use the links above to login or sign up to use Marathonr</p>
+   <p>Title: {{ movie.title }}</p>
+   {% if movie.showtimes %}
+     <p>Showtimes:<br>
+       {% for showtime in movie.showtimes %}
+       {{ showtime.theatre.name }} {{ showtime.dateTime }}<br/>
+     {% endfor %}</p>
+   {% else %}
+     <p>Showtimes: Unknown</p>
+   {% endif %}
+   <p>Rating: <br>
+     {% for rating in movie.ratings %}
+     {{ rating.code }}<br/>
+   {% endfor %}</p>
+   <hr />
+ {% endfor %}
+{% else %}
+  <p>Please use the links above to login or sign up to use Marathonr</p>
 {% endif %}
-
 
 {% endblock %}

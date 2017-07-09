@@ -3,7 +3,7 @@ import json
 import requests
 from django.shortcuts import render, redirect
 from .models import Movie
-# from .query import query_tmsapi
+from .query import query_tmsapi
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -16,13 +16,13 @@ def index(request):
     movies = Movie.objects.all()
     return render(request, 'index.html', {'movies': movies})
 
-# BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
-#
-# def get_movies(request):
-#     """ Renders view with live movie data from ```query_tmsapi``` function """
-#     print("get_movies")
-#     movies = query_tmsapi(request)
-#     return render(request, 'index.html', {'movies': movies})
+BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
+
+def get_movies(request):
+    """ Renders view with live movie data from ```query_tmsapi``` function """
+    print("get_movies")
+    movies = query_tmsapi(request)
+    return render(request, 'index.html', {'movies': movies})
 
 def show(request, movie_id):
     movie = Movie.objects.get(id=movie_id)
