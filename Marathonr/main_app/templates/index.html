@@ -5,16 +5,17 @@
 {% if user.is_authenticated %}
   {% for movie in movies %}
     <a href="/{{movie.id}}">
-      <p>Name: {{ movie.title }}</p>
+      <p>Name: {{movie.title}}</p>
     </a>
     <a href="/user/{{movie.user.username}}"
-      <p>Seen By: {{movie.user.username }}</p>
+      <p>Seen By: {{movie.user.username}}</p>
     </a>
   	{% if movie.showtimes %}
-      <p>Showtimes: {{ movie.showtimes}}</p>
+      <p>Showtimes: {{movie.showtimes}}</p>
   	{% else %}
       <p>Showtimes: Unknown</p>
   	{% endif%}
+    <p>Tickets: {{movie.ticketURI}}
     <p>Rating: {{movie.ratings_code}}
 	  <hr />
   {% endfor %}
