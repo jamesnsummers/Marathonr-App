@@ -2,12 +2,12 @@
 import json
 import requests
 from django.shortcuts import render, redirect
-from .models import Movie
-from .query import query_tmsapi
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
+from .models import Movie
+from .query import query_tmsapi
 from .forms import LoginForm, SignUpForm, MarathonForm
 
 BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
@@ -71,12 +71,18 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def create(request):
-    if request.method == 'POST':
-        form = MarathonForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-    else:
-        form = MarathonForm()
-
+    # if request.method == 'POST':
+    #     form = MarathonForm(request.POST)
+    #
+    #     movies = query_tmsapi(request)
+    #     return render(request, 'index.html', {'movies': movies})
+    #
+    #     # if form.is_valid():
+    #     #     form.save()
+    # else:
+    form = MarathonForm()
     return render(request, 'form.html', {'form': form})
+
+# def search(request):
+#     movies = query_tmsapi(request)
+#     return render(request, 'index.html', {'movies': movies})
