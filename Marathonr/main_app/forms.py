@@ -5,15 +5,17 @@ from django.contrib.auth.models import User
 from .models import Movie
 
 # setting up the initial form for user to fill out
-class MarathonForm(forms.Form):
+class MarathonBasicsForm(forms.Form):
     startDate = forms.DateField(label='yyyy-mm-dd')
     zip_code = forms.IntegerField(label='ZIP')
     distance_radius = forms.IntegerField(label='Search Radius')
     distance_units = forms.CharField(label='mi/km', max_length=100)
-    movie_one = forms.ModelChoiceField(queryset=Movie.objects.all().order_by('title'))
-    movie_two = forms.ModelChoiceField(queryset=Movie.objects.all().order_by('title'))
-    movie_three = forms.ModelChoiceField(queryset=Movie.objects.all().order_by('title'))
-    movie_four = forms.ModelChoiceField(queryset=Movie.objects.all().order_by('title'))
+
+class MarathonMoviesForm(forms.Form):
+    movie_one = forms.CharField(label='Movie 1', max_length=100)
+    movie_two = forms.CharField(label='Movie 2', max_length=100)
+    movie_three = forms.CharField(label='Movie 3', max_length=100)
+    movie_four = forms.CharField(label='Movie 4', max_length=100)
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')

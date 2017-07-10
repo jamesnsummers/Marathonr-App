@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Movie
 from .query import query_tmsapi
-from .forms import LoginForm, SignUpForm, MarathonForm
+from .forms import LoginForm, SignUpForm, MarathonBasicsForm, MarathonMoviesForm
 
 BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
 
@@ -17,6 +17,7 @@ def index(request):
     movies = Movie.objects.all()
     return render(request, 'index.html', {'movies': movies})
 
+# use to test api call
 def get_movies(request):
     """ Renders view with live movie data from ```query_tmsapi``` function """
     print("get_movies")
@@ -70,19 +71,10 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-def create(request):
-    # if request.method == 'POST':
-    #     form = MarathonForm(request.POST)
-    #
-    #     movies = query_tmsapi(request)
-    #     return render(request, 'index.html', {'movies': movies})
-    #
-    #     # if form.is_valid():
-    #     #     form.save()
-    # else:
-    form = MarathonForm()
-    return render(request, 'form.html', {'form': form})
+def set_basics_form(request):
+    form = MarathonBasicsForm()
+    return render(request, 'form-one.html', {'form': form})
 
-# def search(request):
-#     movies = query_tmsapi(request)
-#     return render(request, 'index.html', {'movies': movies})
+def set_movies_form(request):
+    movies = query_tmsapi(request)
+    return render(request, 'form-two.html', {'movies': movies})
