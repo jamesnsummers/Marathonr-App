@@ -21,8 +21,8 @@ def index(request):
 def get_movies(request):
     """ Renders view with live movie data from ```query_tmsapi``` function """
     print("get_movies")
-    movies = query_tmsapi(request)
-    return render(request, 'index.html', {'movies': movies})
+    res = query_tmsapi(request, mfilter=True)
+    return render(request, 'index.html', {'movies': res['movies']})
 
 def show(request, movie_id):
     movie = Movie.objects.get(id=movie_id)
@@ -77,5 +77,5 @@ def set_basics_form(request):
     return render(request, 'form-one.html', {'form': form})
 
 def set_movies_form(request):
-    movies = query_tmsapi(request)
-    return render(request, 'form-two.html', {'movies': movies})
+    res = query_tmsapi(request, mfilter=False)
+    return render(request, 'form-two.html', {'movies': res['movies'], 'zip':res['zip'], 'startDate': res['startDate']})

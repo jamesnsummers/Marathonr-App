@@ -7,7 +7,7 @@ BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
 API_KEY = 't6ubhgkku8gu397wbnpjkb4j'
 FAKE_DATA = True
 
-def query_tmsapi(request):
+def query_tmsapi(request, mfilter=False):
     """
     Uses GET params from request to query the API. Returns a dict of the
     JSON-encoded response.
@@ -59,12 +59,17 @@ def query_tmsapi(request):
                 movie['theatre']['showtimes'] = []
                 movie['theatre']['name'] = 'FAKE THEATER'
 
-        return movies
+        if mfilter:
+            return filter_movies(movies, request.GET)
+        else:
+            return {'movies': movies, 'zip': params['zip'], 'startDate': params['startDate']}
 
     else:
         print("Reponse status: {} {}".format(response.status_code, response.reason))
         print(response.text)
-        # import pdb; pdb.set_trace()
-        # response.raise_for_status()
 
     return None
+
+def filter_movies(movies, request):
+    titles = [ k for k, v in request.iteritems() if v == 'on' ]
+    return {'movies': [m for m in movies if m['title'] in titles]}

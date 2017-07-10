@@ -20,6 +20,8 @@
  <hr />
 {% endfor %}
 
-<input type="submit" value="Submit" />
+<input class="submitBtn" type="submit" value="Submit" />
+<input class="submitBtn" type="hidden" name="zip" value="{{ zip }}" />
+<input class="submitBtn" type="hidden" name="startDate" value="{{ startDate }}" />
 </form>
 {% endblock %}

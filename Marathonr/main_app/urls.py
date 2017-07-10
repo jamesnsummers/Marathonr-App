@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^form-one/$', views.set_basics_form, name="form-one"),
     url(r'^form-one/movies/$', views.set_movies_form),
     url(r'^form-one/form-two/$', views.set_movies_form, name="form-two"),
-    url(r'^form-one/form-two/marathon-options/$', views.get_movies),
+    url(r'^form-one/form-two/marathon/$', views.get_movies),
     url(r'^$', index),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^login/$', views.login_view, name="login"),
