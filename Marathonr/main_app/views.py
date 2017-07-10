@@ -10,13 +10,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import LoginForm, SignUpForm
 
+BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
 
 def index(request):
-    """function to show index"""
+    """function to show index of DB movies (for testing)"""
     movies = Movie.objects.all()
     return render(request, 'index.html', {'movies': movies})
-
-BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
 
 def get_movies(request):
     """ Renders view with live movie data from ```query_tmsapi``` function """
