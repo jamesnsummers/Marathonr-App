@@ -13,10 +13,14 @@
    {% else %}
      <p>Showtimes: Unknown</p>
    {% endif %}
-   <p>Rating: <br>
-     {% for rating in movie.ratings %}
-     {{ rating.code }}<br/>
-   {% endfor %}</p>
+   <p>Rating:
+     {% if movie.ratings %}
+       {% for rating in movie.ratings %}
+         {{ rating.code }}
+       {% endfor %}</p>
+     {% else %}
+     NR
+   {% endif %}
    <hr />
  {% endfor %}
 {% else %}
