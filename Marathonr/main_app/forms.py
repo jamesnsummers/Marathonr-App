@@ -3,13 +3,13 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Movie
-# setting up the initial form for user to fill out
 
+# setting up the initial form for user to fill out
 class MarathonForm(forms.Form):
-    date = forms.DateField(label='yyyy.mm.dd')
-    zip_code = forms.DecimalField(label='ZIP', max_digits=7)
-    distance_radius = forms.DecimalField(label='Value', max_digits=3, decimal_places=0)
-    distance_units = forms.CharField(label='Material', max_length=100)
+    date = forms.DateField(label='yyyy-mm-dd')
+    zip_code = forms.IntegerField(label='ZIP')
+    distance_radius = forms.IntegerField(label='Search Radius')
+    distance_units = forms.CharField(label='mi/km', max_length=100)
     movie_one = forms.ModelChoiceField(queryset=Movie.objects.all().order_by('title'))
     movie_two = forms.ModelChoiceField(queryset=Movie.objects.all().order_by('title'))
     movie_three = forms.ModelChoiceField(queryset=Movie.objects.all().order_by('title'))

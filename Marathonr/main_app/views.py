@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import LoginForm, SignUpForm
+from .forms import LoginForm, SignUpForm, MarathonForm
 
 BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
 
@@ -69,3 +69,14 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def create(request):
+    if request.method == 'POST':
+        form = MarathonForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+    else:
+        form = MarathonForm()
+
+    return render(request, 'form.html', {'form': form})
