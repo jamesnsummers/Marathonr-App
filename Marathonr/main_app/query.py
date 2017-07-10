@@ -64,7 +64,7 @@ def query_tmsapi(request):
     else:
         print("Reponse status: {} {}".format(response.status_code, response.reason))
         print(response.text)
-        import pdb; pdb.set_trace()
-        response.raise_for_status()
+        # import pdb; pdb.set_trace()
+        # response.raise_for_status()
 
     return None
