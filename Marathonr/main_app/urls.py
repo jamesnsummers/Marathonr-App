@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^([0-9]+)/$', show, name='show'),
     url(r'^movies/$', views.get_movies),
     url(r'^about/$', views.about),
+    url(r'^home/$', views.home),
     url(r'^form-one/$', views.set_basics_form, name="form-one"),
     url(r'^form-one/movies/$', views.set_movies_form),
     url(r'^form-one/form-two/$', views.set_movies_form, name="form-two"),

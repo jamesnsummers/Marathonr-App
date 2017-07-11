@@ -21,6 +21,10 @@ def about(request):
     """function to show about page"""
     return render(request, 'about.html')
 
+def home(request):
+    """function to show home page"""
+    return render(request, 'home.html')
+
 # use to test api call
 def get_movies(request):
     """ Renders view with live movie data from ```query_tmsapi``` function """
