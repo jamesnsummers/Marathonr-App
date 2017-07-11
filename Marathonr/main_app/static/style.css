@@ -1,7 +1,16 @@
+/**************************************/
+/**************************************/
+/**************************************/
+/***********GLOBAL STYLES**************/
+/**************************************/
+/**************************************/
+/**************************************/
 body {
   font-family: 'Josefin Sans', sans-serif;
   background-color: #fafafa;
   padding-top: 190px;
+  padding-bottom: 20px;
+  /*background-image: url('/static/images/wolf-man.jpg');*/
 }
 
 a {
@@ -57,14 +66,14 @@ footer {
 }
 
 form {
+  border: black solid 2px;
+  border-radius: 20px;
   padding: 2%;
   margin-bottom: 1%;
   text-align: right;
   color: #4fc3f7;
-  border: black solid 2px;
-  border-radius: 20px;
   background-color: #546e7a;
-  
+
 }
 
 .form-two {
@@ -73,7 +82,7 @@ form {
 
 #techUsedList {
   text-align: center;
-  color: #e57373;
+  color: #ff8a65;
 }
 
 .submitBtn {

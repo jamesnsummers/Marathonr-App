@@ -3,10 +3,28 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  <h3>Welcome!</h3>
-  <a href="{% url 'form-one' %}"><h3>Let's Make Your Marathon!</h3></a>
+  {% for movie in movies %}
+   <p>Title: {{ movie.title }}</p>
+   {% if movie.showtimes %}
+     <p>Showtimes:<br>
+       {% for showtime in movie.showtimes %}
+       {{ showtime.theatre.name }} {{ showtime.dateTime }}<br/>
+     {% endfor %}</p>
+   {% else %}
+     <p>Showtimes: Unknown</p>
+   {% endif %}
+   <p>Rating:
+     {% if movie.ratings %}
+       {% for rating in movie.ratings %}
+         {{ rating.code }}
+       {% endfor %}</p>
+     {% else %}
+     NR
+   {% endif %}
+   <hr />
+ {% endfor %}
 {% else %}
-  <h4 id="loginAlert">Please use the links above to login or sign up to use Marathonr</h4>
+  <p>Please use the links above to login or sign up to use Marathonr</p>
 {% endif %}
 
 {% endblock %}
