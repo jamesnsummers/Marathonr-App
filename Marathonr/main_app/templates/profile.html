@@ -3,13 +3,9 @@
 
 {% block content %}
 
-<h1>{{ username }}'s collection:</h1>
+<h3>Hi, {{ user.first_name }} 🙂</h3>
+<h5>Profile pages will be released in a future version. Stay tuned!</h5>
+<br>
 
-{% for movie in movies %}
-<a href="/{{movie.id}}">
-  <h3>{{ movie.title }}</h3>
-</a>
-
-{% endfor %}
 
 {% endblock %}

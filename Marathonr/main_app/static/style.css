@@ -5,10 +5,11 @@
 /**************************************/
 /**************************************/
 /**************************************/
+
 body {
   font-family: 'Josefin Sans', sans-serif;
   background-color: #fafafa;
-  padding-top: 190px;
+  padding-top: 220px;
   padding-bottom: 20px;
   /*background-image: url('/static/images/wolf-man.jpg');*/
 }
@@ -36,17 +37,29 @@ h4 {
   padding: 2%;
 }
 
+h5 {
+  text-align: center;
+}
+
 a:hover, h1:hover, a h3:hover {
   color: #e57373;
   text-decoration: none;
 }
 
+/**************************************/
+/**************************************/
+/**************************************/
+/***********NAVBAR STYLES**************/
+/**************************************/
+/**************************************/
+/**************************************/
+
 .navbar {
   text-align: center;
 }
 
-.greeting {
-  padding-right: 2%;
+.btn-group {
+  align: left;
 }
 
 footer {
@@ -86,6 +99,12 @@ form {
   text-align: left;
 }
 
+.checkbox {
+  transform: scale(2);
+  padding: 10px;
+  position: relative;
+}
+
 #techUsedList {
   text-align: center;
   color: #ff8a65;
@@ -96,5 +115,5 @@ form {
   align-content: center;
   font-size: 1em;
   border-radius: 80px;
-  background-color: #bdbdbd;
+  background-color: #90a4ae;
 }

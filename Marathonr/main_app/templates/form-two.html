@@ -5,16 +5,16 @@
 <h3>Select up to FOUR movies you want to see in your Marathon!</h3><br>
 <div class="container-fluid">
   <div class="row">
-    <form class="col-sm-8 col-md-offset-2 form-two" action="marathon/" method="get">
+    <form class="col-sm-8 col-md-offset-2 col-sm-offset-2 form-two" action="marathon/" method="get">
       <h3>Step 2</h3><br>
       {% for movie in movies %}
-       <input type="radio" name="{{ movie.title }}">  Title: {{ movie.title }}</input>
+       <input class="checkbox" type="checkbox" name="{{ movie.title }}"> <h4>Title: {{ movie.title }}</h4></input>
 
-       <p>Rating:
+       <h4>Rating:
          {% if movie.ratings %}
            {% for rating in movie.ratings %}
              {{ rating.code }}
-           {% endfor %}</p>
+           {% endfor %}</h4>
          {% else %}
          NR
        {% endif %}
