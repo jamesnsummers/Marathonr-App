@@ -3,10 +3,12 @@
 
 {% block content %}
 <h3>Login</h3>
-<form class="col-md-12" id="loginForm" method="POST" action=".">
-  {% csrf_token %}
-  {{ form.as_p}}
-  <input class="submitBtn" type="submit" value="Submit" />
-</form>
+<div class="container">
+  <form class="col-md-8 col-sm-offset-2" id="loginForm" method="POST" action=".">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input class="submitBtn" type="submit" value="Submit" />
+  </form>
+</div>
 
 {% endblock %}

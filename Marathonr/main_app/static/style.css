@@ -78,6 +78,10 @@ footer {
   text-align: center;
 }
 
+#buildBtn {
+  padding: 10px;
+}
+
 form {
   border: black solid 2px;
   border-radius: 20px;
