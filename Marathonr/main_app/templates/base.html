@@ -8,18 +8,20 @@
   <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" / />
   <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Josefin+Sans" rel="stylesheet">  </head>
   <body>
-    <div class="navbar">
-      <a href="/"><h1>Marathonr</h1></a>
-      {% if user.is_authenticated %}
-         <a  class="greeting" href="{% url 'profile' user.username %}">My Profile</a> |
-         <a  class="greeting" href="{% url 'logout' %}">Logout</a>
-         {% else %}
-             <a  class="greeting" href="{% url 'login' %}">Login </a> |
-             <a  class="greeting" href="{% url 'signup' %}">Signup</a>
-       {% endif %}
-       | <a  class="greeting" href="/about">About</a>
-      <hr />
-    </div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <a href="/"><h1>Marathonr</h1></a>
+        {% if user.is_authenticated %}
+           <a  class="greeting" href="{% url 'profile' user.username %}">My Profile</a> |
+           <a  class="greeting" href="{% url 'logout' %}">Logout</a>
+           {% else %}
+               <a  class="greeting" href="{% url 'login' %}">Login </a> |
+               <a  class="greeting" href="{% url 'signup' %}">Signup</a>
+         {% endif %}
+         | <a  class="greeting" href="/about">About</a>
+        <hr />
+      </div>
+    </nav>
 
     {% block content %}
 
