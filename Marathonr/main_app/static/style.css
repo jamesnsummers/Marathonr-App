@@ -14,8 +14,17 @@ h1, h3 {
   text-align: center;
 }
 
+h2 {
+  padding: 2%;
+}
+
 h3 {
+  padding: 2%;
   font-size: 3em;
+}
+
+h4 {
+  padding: 2%;
 }
 
 a:hover, h1:hover, a h3:hover {
@@ -51,17 +60,20 @@ form {
   padding: 2%;
   margin-bottom: 1%;
   text-align: right;
+  color: #4fc3f7;
   border: black solid 2px;
   border-radius: 20px;
+  background-color: #546e7a;
+  
 }
 
 .form-two {
   text-align: left;
 }
 
-#bunnyMan {
-  width: 20%;
-  float: right;
+#techUsedList {
+  text-align: center;
+  color: #e57373;
 }
 
 .submitBtn {
@@ -69,5 +81,5 @@ form {
   align-content: center;
   font-size: 1em;
   border-radius: 80px;
-  font-family: 'Josefin Sans', sans-serif;
+  background-color: #37474f;
 }
