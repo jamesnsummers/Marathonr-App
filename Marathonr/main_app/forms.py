@@ -6,10 +6,10 @@ from .models import Movie
 
 # setting up the initial form for user to fill out
 class MarathonBasicsForm(forms.Form):
-    startDate = forms.DateField(label='yyyy-mm-dd')
-    zip = forms.CharField(label='ZIP', max_length=5)
-    distance_radius = forms.IntegerField(label='Search Radius')
-    distance_units = forms.CharField(label='mi/km', max_length=100)
+    startDate = forms.DateField(label='Date (YYYY-MM-DD)')
+    zip = forms.CharField(label='ZIP (xxxxx)', max_length=5)
+    # distance_radius = forms.IntegerField(label='Search Radius')
+    # distance_units = forms.ChoiceField(choices=[(' ', ' '), ('km', 'km'), ('mi', 'mi')])
 
 class MarathonMoviesForm(forms.Form):
     movie_one = forms.CharField(label='Movie 1', max_length=100)
