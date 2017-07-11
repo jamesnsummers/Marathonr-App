@@ -27,6 +27,14 @@ a:hover, h1:hover, a h3:hover {
   text-align: center;
 }
 
+.greeting {
+  padding-right: 2%;
+}
+
+footer {
+  text-align: center;
+}
+
 #loginAlert {
   text-align: center;
 }

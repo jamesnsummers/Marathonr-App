@@ -12,13 +12,15 @@
       <div class="container">
         <a href="/"><h1>Marathonr</h1></a>
         {% if user.is_authenticated %}
-           <a  class="greeting" href="{% url 'profile' user.username %}">My Profile</a> |
-           <a  class="greeting" href="{% url 'logout' %}">Logout</a>
+           <a class="greeting" href="{% url 'profile' user.username %}">My Profile</a>
+           <a class="greeting" href="{% url 'form-one' %}">Make A Marathon!</a>
+           <a  class="greeting" href="/about">How It Works</a>
+           <a class="greeting" href="{% url 'logout' %}">Logout</a>
            {% else %}
-               <a  class="greeting" href="{% url 'login' %}">Login </a> |
-               <a  class="greeting" href="{% url 'signup' %}">Signup</a>
+               <a class="greeting" href="{% url 'login' %}">Login </a>
+               <a class="greeting" href="{% url 'signup' %}">Signup</a>
+               <a  class="greeting" href="/about">How It Works</a>
          {% endif %}
-         | <a  class="greeting" href="/about">About</a>
         <hr />
       </div>
     </nav>
@@ -27,8 +29,8 @@
 
 	  {% endblock %}
 
-    <footer class="col-md-offset-5">
-      All Rights Reserved, Marathonr 2017
+    <footer>
+      All Rights Reserved Ⓒ Marathonr 2017
     </footer>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- <script src="{% static 'js/app.js' %}"></script> -->
