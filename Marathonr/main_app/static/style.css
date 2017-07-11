@@ -17,11 +17,24 @@ h3 {
   font-size: 3em;
 }
 
-a:hover, h1:hover {
+a:hover, h1:hover, a h3:hover {
   color: #e57373;
+  text-decoration: none;
 }
 
 .navbar {
+  text-align: center;
+}
+
+#loginAlert {
+  text-align: center;
+}
+
+#signupForm {
+  text-align: left;
+}
+
+#loginForm {
   text-align: center;
 }
 
