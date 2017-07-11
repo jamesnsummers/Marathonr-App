@@ -2,26 +2,29 @@
 {% load staticfiles %}
 
 {% block content %}
-<h3>Select 2 to 4 movies you'd like see in your Marathon!</h3>
+<h3>Select up to FOUR movies you'd like see in your Marathon!</h3><br>
+<div class="container-fluid">
+  <div class="row">
+    <form class="col-sm-8 col-md-offset-2 form-two" action="marathon/" method="get">
+      <h3>Step 2</h3><br>
+      {% for movie in movies %}
+       <input type="radio" name="{{ movie.title }}">Title: {{ movie.title }}</input>
 
-<form class="" action="marathon/" method="get">
+       <p>Rating:
+         {% if movie.ratings %}
+           {% for rating in movie.ratings %}
+             {{ rating.code }}
+           {% endfor %}</p>
+         {% else %}
+         NR
+       {% endif %}
+       <hr />
+      {% endfor %}
 
-{% for movie in movies %}
- <input type="radio" name="{{ movie.title }}">Title: {{ movie.title }}</input>
-
- <p>Rating:
-   {% if movie.ratings %}
-     {% for rating in movie.ratings %}
-       {{ rating.code }}
-     {% endfor %}</p>
-   {% else %}
-   NR
- {% endif %}
- <hr />
-{% endfor %}
-
-<input class="submitBtn" type="submit" value="Submit" />
-<input class="submitBtn" type="hidden" name="zip" value="{{ zip }}" />
-<input class="submitBtn" type="hidden" name="startDate" value="{{ startDate }}" />
-</form>
+      <input class="submitBtn col-md-offset-6" type="submit" value="Submit" />
+      <input class="submitBtn col-md-offset-6" type="hidden" name="zip" value="{{ zip }}" />
+      <input class="submitBtn col-md-offset-6" type="hidden" name="startDate" value="{{ startDate }}" />
+    </form>
+  </div>
+</div>
 {% endblock %}

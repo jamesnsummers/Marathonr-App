@@ -17,6 +17,10 @@ def index(request):
     movies = Movie.objects.all()
     return render(request, 'index.html', {'movies': movies})
 
+def about(request):
+    """function to show about page"""
+    return render(request, 'about.html')
+
 # use to test api call
 def get_movies(request):
     """ Renders view with live movie data from ```query_tmsapi``` function """
@@ -78,4 +82,4 @@ def set_basics_form(request):
 
 def set_movies_form(request):
     res = query_tmsapi(request, mfilter=False)
-    return render(request, 'form-two.html', {'movies': res['movies'], 'zip':res['zip'], 'startDate': res['startDate']})
+    return render(request, 'form-two.html', {'movies': res['movies'], 'zip': res['zip'], 'startDate': res['startDate']})

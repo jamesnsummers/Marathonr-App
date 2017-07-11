@@ -7,7 +7,7 @@ from .models import Movie
 # setting up the initial form for user to fill out
 class MarathonBasicsForm(forms.Form):
     startDate = forms.DateField(label='yyyy-mm-dd')
-    zip = forms.CharField(label='ZIP')
+    zip = forms.CharField(label='ZIP', max_length=5)
     distance_radius = forms.IntegerField(label='Search Radius')
     distance_units = forms.CharField(label='mi/km', max_length=100)
 
