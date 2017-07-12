@@ -11,7 +11,7 @@ class Movie(models.Model):
     ticketURI = models.CharField(max_length=100)
     ratings_code = models.CharField(max_length=10)
     run_time = models.CharField(max_length=10, default='PT00H00M')
-    showtimes_raw = models.CharField(max_length=1000000)
+    showtimes_raw = models.CharField(max_length=1000000, default='0')
     user = models.ForeignKey(User)
 
     def __str__(self):
