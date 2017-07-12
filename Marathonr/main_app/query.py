@@ -2,9 +2,10 @@ import requests
 import pickle
 from datetime import datetime
 from .models import Movie
+import os
 
 BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
-API_KEY = 't6ubhgkku8gu397wbnpjkb4j'
+API_KEY = os.environ['MARATHONR_API_KEY']
 #Change FAKE_DATA to False to stop using pickled data
 FAKE_DATA = False
 
