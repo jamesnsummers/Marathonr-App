@@ -14,14 +14,12 @@ def query_tmsapi(request, mfilter=False):
     JSON-encoded response.
     """
 
-    print("query_tmsapi")
     params = {}
 
     expected = 'startDate', 'zip'
 
     for param in expected:
         if request.GET.get(param):
-            print("Got param {}: {}".format(param, request.GET[param]))
             params[param] = request.GET[param]
 
     # Make sure we have a real query before we waste an API call
@@ -41,10 +39,8 @@ def query_tmsapi(request, mfilter=False):
         else:
             response = fake_response
 
-        print("{}: {}".format(response.request.url, response.status_code))
 
     else:
-        print("No query params passed to query_tmsapi")
         return {'hey':'whatup'}
 
     if response.ok:
@@ -62,16 +58,12 @@ def query_tmsapi(request, mfilter=False):
                 movies.append(movie)
 
             except KeyError as err:
-                print("Error loading key {} for {}".format(err, m.get('title')))
+                pass
 
         if mfilter:
             return filter_movies(movies, request.GET)
         else:
             return {'movies': movies, 'zip': params['zip'], 'startDate': params['startDate']}
-
-    else:
-        print("Reponse status: {} {}".format(response.status_code, response.reason))
-        print(response.text)
 
     return None
 

@@ -17,8 +17,6 @@ class Marathons(object):
 
         self.schedules = self.create_schedules()
 
-        for x in self.schedules:
-            print(x)
 
     def earliest(self):
         """
@@ -38,14 +36,13 @@ class Marathons(object):
                 break
 
         lineup.append(starter_showtime)
-        print(starter_showtime.movie, starter_showtime)
         cutoff = len(movies_by_time)
 
         while movies_by_time:
             i += 1
 
             if i > cutoff:
-                print("No options found.")
+
                 break
 
             # remove last movie from movies_by_time until there are no more options
