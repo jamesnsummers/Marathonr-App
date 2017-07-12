@@ -11,7 +11,6 @@ body {
   background-color: #fafafa;
   padding-top: 220px;
   padding-bottom: 20px;
-  /*background-image: url('/static/images/wolf-man.jpg');*/
 }
 
 a {
@@ -56,6 +55,9 @@ a:hover, h1:hover, a h3:hover {
 
 .navbar {
   text-align: center;
+  background-image: url('/static/images/countdown.gif');
+  background-size: cover;
+  background-position: center;
 }
 
 .btn-group {

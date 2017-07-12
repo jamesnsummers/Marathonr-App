@@ -1,18 +1,17 @@
 """Models file for main_app"""
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import timedelta
+from datetime import datetime, timedelta
 import re
 
 class Movie(models.Model):
     """this is the Movie model"""
     tmsId = models.CharField(max_length=15, default='MV000000000000')
     title = models.CharField(max_length=50)
-    theatre = models.CharField(max_length=50)
-    start_time = models.CharField(max_length=50)
     ticketURI = models.CharField(max_length=100)
     ratings_code = models.CharField(max_length=10)
     run_time = models.CharField(max_length=10, default='PT00H00M')
+    showtimes_raw = models.CharField(max_length=1000000)
     user = models.ForeignKey(User)
 
     def __str__(self):
@@ -35,9 +34,41 @@ class Movie(models.Model):
             return 'n/a'
 
     @property
+    def showtimes(self):
+        return [Showtime(movie=self,
+                         start_time_raw=x['dateTime'],
+                         theater_raw=x['theatre']) for x in self.showtimes_raw]
+
+
+class Showtime(models.Model):
+    """
+    this is the show time model
+    We get something like this from the API:
+        {u'barg': False,
+         u'dateTime': u'2017-07-11T19:00',
+         u'theatre': {u'id': u'9489', u'name': u'Alamo Drafthouse at the Ritz'},
+         u'ticketURI': u'http://www.fandango.com/tms.asp?t=AAUQP&m=166105&d=2017-07-11'}
+    """
+    start_time_raw = models.CharField(max_length=16)
+    theater_raw = models.CharField(max_length=50)
+    ticketURI = models.CharField(max_length=100)
+    movie = models.ForeignKey(Movie)
+
+    def __str__(self):
+        return "{} {}".format(self.theater, self.start_time)
+
+    @property
+    def start_time(self):
+        return datetime.strptime(self.start_time_raw, '%Y-%m-%dT%H:%M')
+
+    @property
+    def theater(self):
+        return self.theater_raw['name']
+
+    @property
     def end_time(self):
         """
         Takes datetime `start_time` and int `run_minutes` and returns
         a datetime for the end time of the movie.
         """
-        return self.start_time + timedelta(0, self.run_minutes * 60)
+        return self.start_time + timedelta(0, self.movie.run_minutes * 60)

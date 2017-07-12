@@ -13,6 +13,7 @@ from .forms import LoginForm, SignUpForm, MarathonBasicsForm, MarathonMoviesForm
 
 BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
 
+#this will show index of user's marathons in future versions
 def index(request):
     """function to show index of DB movies (for testing)"""
     movies = Movie.objects.all()
@@ -26,7 +27,9 @@ def home(request):
     """function to show home page"""
     return render(request, 'home.html')
 
+#this will be rolled out in future versions
 def show(request, movie_id):
+    """function to show a single movie object"""
     movie = Movie.objects.get(id=movie_id)
     return render(request, 'show.html', {'movie': movie})
 
@@ -36,6 +39,7 @@ def get_movies(request):
     return render(request, 'index.html', {'movies': res['movies']})
 
 def signup(request):
+    """function to signup new users"""
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -50,6 +54,7 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def login_view(request):
+    """function to render login form"""
     if request.method == 'POST':
         # if post, then authenticate (user submitted username and password)
         form = LoginForm(request.POST)
@@ -70,18 +75,23 @@ def login_view(request):
         return render(request, 'login.html', {'form': form})
 
 def logout_view(request):
+    """function to call logout and redirect to homepage"""
     logout(request)
     return HttpResponseRedirect('/')
 
+#this will be fully rolled out in future versions
 def profile(request, username):
+    """function to show profile page"""
     user = User.objects.get(username=username)
     movies = Movie.objects.filter(user=user)
     return render(request, 'profile.html', {'username': username, 'movies': movies})
 
 def set_basics_form(request):
+    """function to show form-one page"""
     form = MarathonBasicsForm()
     return render(request, 'form-one.html', {'form': form})
 
 def set_movies_form(request):
+    """function to show form-two page"""
     res = query_tmsapi(request, mfilter=False)
     return render(request, 'form-two.html', {'movies': res['movies'], 'zip': res['zip'], 'startDate': res['startDate']})

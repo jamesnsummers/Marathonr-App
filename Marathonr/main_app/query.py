@@ -1,7 +1,7 @@
 import requests
 import pickle
 from datetime import datetime
-# from dateutil import parser
+from .models import Movie
 
 BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
 API_KEY = 't6ubhgkku8gu397wbnpjkb4j'
@@ -47,17 +47,21 @@ def query_tmsapi(request, mfilter=False):
         return {'hey':'whatup'}
 
     if response.ok:
-        movies = response.json()
+        movies = []
 
-        for movie in movies:
+        for m in response.json():
             try:
-                for showtime in movie['showtimes']:
-                    show_date = datetime.strptime(showtime['dateTime'], '%Y-%m-%dT%H:%M')
-                    showtime['dateTime'] = show_date.strftime('%H:%M')
+                vals = {'tmsId': m['tmsId'],
+                        'title': m['title'],
+                        'ratings_code': m['ratings'],
+                        'run_time': m['runTime'],
+                        'showtimes_raw': m['showtimes'],
+                       }
+                movie = Movie(**vals)
+                movies.append(movie)
+
             except KeyError as err:
-                movie['theatre'] = {}
-                movie['theatre']['showtimes'] = []
-                movie['theatre']['name'] = 'FAKE THEATER'
+                print("Error loading key {} for {}".format(err, m.get('title')))
 
         if mfilter:
             return filter_movies(movies, request.GET)
@@ -71,5 +75,6 @@ def query_tmsapi(request, mfilter=False):
     return None
 
 def filter_movies(movies, request):
-    titles = [ k for k, v in request.iteritems() if v == 'on' ]
+    """function to filter through entire json response and return just titles"""
+    titles = [k for k, v in request.iteritems() if v == 'on']
     return {'movies': [m for m in movies if m['title'] in titles]}
