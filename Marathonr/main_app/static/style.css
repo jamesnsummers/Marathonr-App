@@ -94,13 +94,18 @@ form {
   text-align: right;
 }
 
-#form-one-subtitle {
+.form-subtitle {
   text-align: center;
   color: white;
 }
 
 .form-two {
-  text-align: left;
+  text-align: center;
+  color: white;
+}
+
+#form-two-asterisk {
+  text-align: center;
 }
 
 .checkbox {
@@ -120,4 +125,5 @@ form {
   font-size: 1em;
   border-radius: 80px;
   background-color: #90a4ae;
+  color: black;
 }
