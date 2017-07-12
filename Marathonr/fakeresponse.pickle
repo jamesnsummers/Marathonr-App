@@ -22,7 +22,7 @@ Rp9
 (dp10
 S'_now'
 p11
-I1499884737
+I1499893607
 sS'_policy'
 p12
 (icookielib
@@ -46,7 +46,7 @@ sS'strict_domain'
 p20
 I00
 sg11
-I1499884737
+I1499893607
 sS'strict_ns_set_path'
 p21
 I00
@@ -163,7 +163,7 @@ Ntp78
 Rp79
 (dp80
 g11
-I1499884737
+I1499893607
 sg12
 (icookielib
 DefaultCookiePolicy
@@ -180,7 +180,7 @@ I00
 sg20
 I00
 sg11
-I1499884737
+I1499893607
 sg21
 I00
 sg22
@@ -205,7 +205,7 @@ timedelta
 p87
 (I0
 I0
-I417446
+I254582
 tp88
 Rp89
 sg47
@@ -223,7 +223,7 @@ S'cache-control'
 p95
 a(S'Cache-Control'
 p96
-S'max-age=891'
+S'max-age=745'
 p97
 tp98
 aa(lp99
@@ -247,7 +247,7 @@ S'date'
 p110
 a(S'Date'
 p111
-S'Wed, 12 Jul 2017 18:38:48 GMT'
+S'Wed, 12 Jul 2017 21:04:12 GMT'
 p112
 tp113
 aa(lp114
@@ -271,7 +271,7 @@ S'x-mashery-responder'
 p125
 a(S'X-Mashery-Responder'
 p126
-S'prod-j-worker-us-west-1b-58.mashery.com'
+S'prod-j-worker-us-west-1c-59.mashery.com'
 p127
 tp128
 aa(lp129

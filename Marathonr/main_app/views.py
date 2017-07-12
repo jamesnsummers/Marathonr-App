@@ -95,3 +95,8 @@ def set_movies_form(request):
     """function to show form-two page"""
     res = query_tmsapi(request, mfilter=False)
     return render(request, 'form-two.html', {'movies': res['movies'], 'zip': res['zip'], 'startDate': res['startDate']})
+
+def get_marathons(request):
+    res = query_tmsapi(request, mfilter=True)
+    marathons = Marathons(movies=res['movies'])
+    return render(request, 'index.html', {'marathons': marathons})

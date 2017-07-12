@@ -2,27 +2,17 @@
 {% load staticfiles %}
 
 {% block content %}
+
 {% if user.is_authenticated %}
-  {% for movie in movies %}
-   <p>Title: {{ movie.title }}</p>
-   {% if movie.showtimes %}
-     <p>Showtimes:<br>
-       {% for showtime in movie.showtimes %}
-       {{ showtime.theater }} {{ showtime.start_time }}<br/>
-     {% endfor %}</p>
-   {% else %}
-     <p>Showtimes: Unknown</p>
-   {% endif %}
-   <p>Rating:
-     {% if movie.ratings %}
-       {% for rating in movie.ratings %}
-         {{ rating.code }}
-       {% endfor %}</p>
-     {% else %}
-     NR
-   {% endif %}
-   <hr />
- {% endfor %}
+
+{% for schedule in marathons.schedules %}
+  <h3>Marathon {{forloop.counter}}</h3>
+    {% for showtime in schedule %}
+      <h5>{{ showtime.movie.title }}</h5>
+      <h5>{{ showtime.start_time }} @ {{ showtime.theater }} | <a href="{{showtime.ticketURI}}">Get Tickets</a></h5>
+    {% endfor %}
+{% endfor %}
+
 {% else %}
   <h3>Please login or sign up to use Marathonr</h3><h3>♡</h3>
 {% endif %}

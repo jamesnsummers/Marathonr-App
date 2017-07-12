@@ -8,11 +8,9 @@ class Movie(models.Model):
     """this is the Movie model"""
     tmsId = models.CharField(max_length=15, default='MV000000000000')
     title = models.CharField(max_length=50)
-    ticketURI = models.CharField(max_length=100)
-    #ratings_code = models.CharField(max_length=10)
     run_time = models.CharField(max_length=10, default='PT00H00M')
     showtimes_raw = models.CharField(max_length=1000000, default='0')
-    ratings_raw = models.CharField(max_length=10, default='NR')
+    ratings_raw = models.CharField(max_length=1000, default='NR')
     user = models.ForeignKey(User)
 
     def __str__(self):
@@ -38,7 +36,15 @@ class Movie(models.Model):
     def showtimes(self):
         return [Showtime(movie=self,
                          start_time_raw=x['dateTime'],
-                         theater_raw=x['theatre']) for x in self.showtimes_raw]
+                         theater_raw=x['theatre'],
+                         ticketURI=x.get('ticketURI')) for x in self.showtimes_raw]
+
+    @property
+    def mpaa_rating(self):
+        for rating in self.ratings_raw:
+            if rating['body'] == "Motion Picture Association of America":
+                return rating['code']
+                return 'NR'
 
 
 class Showtime(models.Model):
@@ -56,7 +62,7 @@ class Showtime(models.Model):
     movie = models.ForeignKey(Movie)
 
     def __str__(self):
-        return "{} {}".format(self.theater, self.start_time)
+        return "{} @ {} {}".format(self.movie.title, self.theater, self.start_time)
 
     @property
     def start_time(self):
