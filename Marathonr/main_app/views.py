@@ -1,4 +1,4 @@
-"""views file for main_app"""
+""" Views file for main_app """
 import json
 import requests
 from django.shortcuts import render, redirect
@@ -97,6 +97,7 @@ def set_movies_form(request):
     return render(request, 'form-two.html', {'movies': res['movies'], 'zip': res['zip'], 'startDate': res['startDate']})
 
 def get_marathons(request):
+    """function to get marathons"""
     res = query_tmsapi(request, mfilter=True)
     marathons = Marathons(movies=res['movies'])
     return render(request, 'index.html', {'marathons': marathons})

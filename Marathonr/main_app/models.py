@@ -34,6 +34,7 @@ class Movie(models.Model):
 
     @property
     def showtimes(self):
+        """ returns params of the showtimes that we'll need to use in the template """
         return [Showtime(movie=self,
                          start_time_raw=x['dateTime'],
                          theater_raw=x['theatre'],
@@ -41,6 +42,7 @@ class Movie(models.Model):
 
     @property
     def mpaa_rating(self):
+        """ returns params of the ratings that we'll need to use in the template """
         for rating in self.ratings_raw:
             if rating['body'] == "Motion Picture Association of America":
                 return rating['code']
@@ -66,10 +68,12 @@ class Showtime(models.Model):
 
     @property
     def start_time(self):
+        """ formats the start time to be prettier for use in the template """
         return datetime.strptime(self.start_time_raw, '%Y-%m-%dT%H:%M')
 
     @property
     def theater(self):
+        """ returns the theatre name for use in the template """
         return self.theater_raw['name']
 
     @property

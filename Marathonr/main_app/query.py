@@ -65,6 +65,10 @@ def query_tmsapi(request, mfilter=False):
         else:
             return {'movies': movies, 'zip': params['zip'], 'startDate': params['startDate']}
 
+    else:
+        print("Reponse status: {} {}".format(response.status_code, response.reason))
+        print(response.text)
+
     return None
 
 def filter_movies(movies, request):

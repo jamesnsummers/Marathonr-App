@@ -25,6 +25,7 @@ class Marathons(object):
         return sorted(self.showtimes, key=lambda x: x.start_time)
 
     def build_lineup(self, starter_movie):
+        """ Sets the starter movie and builds lineup """
         i = 0
         lineup = []
         movies_by_time = self.earliest()
@@ -42,7 +43,6 @@ class Marathons(object):
             i += 1
 
             if i > cutoff:
-
                 break
 
             # remove last movie from movies_by_time until there are no more options
@@ -77,6 +77,7 @@ class Marathons(object):
         return possible
 
     def create_schedules(self):
+        """ Creates multiple lineup/marathon options """
         schedules = []
 
         for movie in self.movies:
