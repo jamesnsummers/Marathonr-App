@@ -15,16 +15,16 @@ class Marathons(object):
         """
         returns movies in a list of tuples sorted by start time [(tms1, 10:00am), (tms2, 10:30am)]
         """
-        d = {movie: movie.start_time for movie in movies}
+        d = {movie: movie.start_time for movie in self.movies}
         return sorted(d.items(), key=lambda x: x[1])
 
     def build_lineup(self, starter):
         lineup = []
-        movies_by_time = self.earliest(self.movies)
+        movies_by_time = self.earliest()
         lineup.append(starter)
 
         while movies_by_time:
-            movies_by_time = self.remove_duplicate(lineup[-1], movies_by_time)
+            movies_by_time = self.remove_duplicates(lineup[-1], movies_by_time)
             if movies_by_time:
                 try:
                     lineup.append(self.late_enough(lineup[-1], movies_by_time)[0])
