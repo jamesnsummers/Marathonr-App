@@ -9,9 +9,10 @@ class Movie(models.Model):
     tmsId = models.CharField(max_length=15, default='MV000000000000')
     title = models.CharField(max_length=50)
     ticketURI = models.CharField(max_length=100)
-    ratings_code = models.CharField(max_length=10)
+    #ratings_code = models.CharField(max_length=10)
     run_time = models.CharField(max_length=10, default='PT00H00M')
     showtimes_raw = models.CharField(max_length=1000000, default='0')
+    ratings_raw = models.CharField(max_length=10, default='NR')
     user = models.ForeignKey(User)
 
     def __str__(self):
@@ -72,3 +73,16 @@ class Showtime(models.Model):
         a datetime for the end time of the movie.
         """
         return self.start_time + timedelta(0, self.movie.run_minutes * 60)
+
+class Rating(models.Model):
+    """
+    this is the rating model
+    We get something like this form the API:
+        {u'body': "Motion Picture Association of America",
+         u'code': "R"}
+    """
+    body_raw = models.CharField(max_length=50)
+    code = models.CharField(max_length=10)
+
+    def __str__(self):
+        return "{}".format(self.code)

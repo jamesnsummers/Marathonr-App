@@ -5,7 +5,8 @@ from .models import Movie
 
 BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
 API_KEY = 't6ubhgkku8gu397wbnpjkb4j'
-FAKE_DATA = True
+#Change FAKE_DATA to False to stop using pickled data
+FAKE_DATA = False
 
 def query_tmsapi(request, mfilter=False):
     """
@@ -53,7 +54,7 @@ def query_tmsapi(request, mfilter=False):
             try:
                 vals = {'tmsId': m['tmsId'],
                         'title': m['title'],
-                        'ratings_code': m['ratings'],
+                        'ratings_raw': m['ratings'],
                         'run_time': m['runTime'],
                         'showtimes_raw': m['showtimes'],
                        }
@@ -77,4 +78,4 @@ def query_tmsapi(request, mfilter=False):
 def filter_movies(movies, request):
     """function to filter through entire json response and return just titles"""
     titles = [k for k, v in request.iteritems() if v == 'on']
-    return {'movies': [m for m in movies if m['title'] in titles]}
+    return {'movies': [m for m in movies if m.title in titles]}
