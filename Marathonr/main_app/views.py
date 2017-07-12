@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Movie
+from .marathons import Marathons
 from .query import query_tmsapi
 from .forms import LoginForm, SignUpForm, MarathonBasicsForm, MarathonMoviesForm
 
@@ -25,21 +26,14 @@ def home(request):
     """function to show home page"""
     return render(request, 'home.html')
 
-# use to test api call
-def get_movies(request):
-    """ Renders view with live movie data from ```query_tmsapi``` function """
-    print("get_movies")
-    res = query_tmsapi(request, mfilter=True)
-    return render(request, 'index.html', {'movies': res['movies']})
-
 def show(request, movie_id):
     movie = Movie.objects.get(id=movie_id)
     return render(request, 'show.html', {'movie': movie})
 
-def profile(request, username):
-    user = User.objects.get(username=username)
-    movies = Movie.objects.filter(user=user)
-    return render(request, 'profile.html', {'username': username, 'movies': movies})
+def get_movies(request):
+    """ Renders view with live movie data from ```query_tmsapi``` function """
+    res = query_tmsapi(request, mfilter=True)
+    return render(request, 'index.html', {'movies': res['movies']})
 
 def signup(request):
     if request.method == 'POST':
@@ -75,10 +69,14 @@ def login_view(request):
         form = LoginForm()
         return render(request, 'login.html', {'form': form})
 
-
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
+
+def profile(request, username):
+    user = User.objects.get(username=username)
+    movies = Movie.objects.filter(user=user)
+    return render(request, 'profile.html', {'username': username, 'movies': movies})
 
 def set_basics_form(request):
     form = MarathonBasicsForm()
