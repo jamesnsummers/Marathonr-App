@@ -8,7 +8,7 @@ class Marathons(object):
 
     def __init__(self, movies):
         # Default to 30 minutes between movies
-        self.PADDING_TIME = 30 * 60
+        self.PADDING_TIME = 45 * 60
         self.movies = movies
         self.showtimes = []
 

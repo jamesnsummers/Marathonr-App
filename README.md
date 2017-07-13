@@ -9,7 +9,7 @@
 [Github](https://github.com/jamesnsummers/Marathonr-App)
 
 ### Project Planning on Trello
-[Trello](https://trello.com/b/yG0nTo0W/project-03-movie-marathon-builder)
+[Trello](https://trello.com/b/yG0nTo0W/marathonr)
 
 ### Technologies Used
 
