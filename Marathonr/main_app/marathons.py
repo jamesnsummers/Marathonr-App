@@ -20,7 +20,7 @@ class Marathons(object):
 
     def earliest(self):
         """
-        returns movies in a list of tuples sorted by start time [(tms1, 10:00am), (tms2, 10:30am)]
+        returns movies in a list of tuples sorted by start time [(tmsId1, 10:00am), (tmsId2, 10:30am)]
         """
         return sorted(self.showtimes, key=lambda x: x.start_time)
 
