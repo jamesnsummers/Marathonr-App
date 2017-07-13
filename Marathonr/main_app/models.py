@@ -83,16 +83,3 @@ class Showtime(models.Model):
         a datetime for the end time of the movie.
         """
         return self.start_time + timedelta(0, self.movie.run_minutes * 60)
-
-class Rating(models.Model):
-    """
-    this is the rating model
-    We get something like this form the API:
-        {u'body': "Motion Picture Association of America",
-         u'code': "R"}
-    """
-    body_raw = models.CharField(max_length=50)
-    code = models.CharField(max_length=10)
-
-    def __str__(self):
-        return "{}".format(self.code)

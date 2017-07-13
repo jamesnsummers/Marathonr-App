@@ -22,7 +22,7 @@ Rp9
 (dp10
 S'_now'
 p11
-I1499958520
+I1499959553
 sS'_policy'
 p12
 (icookielib
@@ -46,7 +46,7 @@ sS'strict_domain'
 p20
 I00
 sg11
-I1499958520
+I1499959553
 sS'strict_ns_set_path'
 p21
 I00
@@ -163,7 +163,7 @@ Ntp78
 Rp79
 (dp80
 g11
-I1499958520
+I1499959553
 sg12
 (icookielib
 DefaultCookiePolicy
@@ -180,7 +180,7 @@ I00
 sg20
 I00
 sg11
-I1499958520
+I1499959553
 sg21
 I00
 sg22
@@ -205,7 +205,7 @@ timedelta
 p87
 (I0
 I0
-I291025
+I223464
 tp88
 Rp89
 sg47
@@ -223,7 +223,7 @@ S'cache-control'
 p95
 a(S'Cache-Control'
 p96
-S'max-age=404'
+S'max-age=884'
 p97
 tp98
 aa(lp99
@@ -247,7 +247,7 @@ S'date'
 p110
 a(S'Date'
 p111
-S'Thu, 13 Jul 2017 15:00:24 GMT'
+S'Thu, 13 Jul 2017 15:25:37 GMT'
 p112
 tp113
 aa(lp114
@@ -255,7 +255,7 @@ S'server'
 p115
 a(S'Server'
 p116
-S'Apache'
+S'Mashery Proxy'
 p117
 tp118
 aa(lp119
@@ -271,7 +271,7 @@ S'x-mashery-responder'
 p125
 a(S'X-Mashery-Responder'
 p126
-S'prod-j-worker-us-west-1c-57.mashery.com'
+S'prod-j-worker-us-west-1c-59.mashery.com'
 p127
 tp128
 aa(lp129
@@ -279,7 +279,7 @@ S'x-powered-by'
 p130
 a(S'X-Powered-By'
 p131
-S'PHP/5.5.9-1ubuntu4.14'
+S'PHP/5.5.9-1ubuntu4.20'
 p132
 tp133
 aa(lp134
