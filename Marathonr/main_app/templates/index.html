@@ -4,14 +4,26 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-
+<h3>Below are all your possible Marathon's!</h3>
 {% for schedule in marathons.schedules %}
-  <h3>Marathon {{forloop.counter}}</h3>
-    {% for showtime in schedule %}
-      <h5>{{ showtime.movie.title }}</h5>
-      <h5>{{ showtime.start_time }} @ {{ showtime.theater }} | <a href="{{showtime.ticketURI}}">Get Tickets</a></h5>
-    {% endfor %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 marathonCard">
+          <h3>Option {{forloop.counter}}</h3>
+            {% for showtime in schedule %}
+              <h4 class="marathonCardText">{{ showtime.movie.title }}</h4>
+              <h5 class="marathonCardText">{{ showtime.start_time }} @ {{ showtime.theater }} | <a href="{{showtime.ticketURI}}">Get Tickets</a></h5>
+            {% endfor %}
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
 {% endfor %}
+<br>
 
 {% else %}
   <h3>Please login or sign up to use Marathonr</h3><h3>♡</h3>

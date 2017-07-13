@@ -58,6 +58,7 @@ a:hover, h1:hover, a h3:hover {
   background-image: url('/static/images/countdown.gif');
   background-size: cover;
   background-position: center;
+  opacity: .9;
 }
 
 .btn-group {
@@ -66,6 +67,19 @@ a:hover, h1:hover, a h3:hover {
 
 footer {
   text-align: center;
+  position: absolute;
+  background-color: #90a4ae;
+  opacity: .9;
+}
+
+.carousel.slide{
+  margin-top: -35px;
+  margin-bottom: -30px;
+}
+
+.carouselImg {
+  margin-left: 42%;
+  width: 15%;
 }
 
 #loginAlert {
@@ -113,6 +127,22 @@ form {
   transform: scale(2);
   padding: 10px;
   position: relative;
+}
+
+.marathonCard {
+  border: 2px solid black;
+  border-radius: 30px;
+  padding-bottom: 30px;
+  background-color: #546e7a;
+}
+
+.marathonCardText, a {
+  text-align: center;
+  color: white;
+}
+
+h3.marathonCardText {
+
 }
 
 #techUsedList {
