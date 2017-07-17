@@ -13,6 +13,7 @@ body {
   padding-bottom: 20px;
 }
 
+/*TODO: add this style to the anchor tag settings below*/
 a {
   text-decoration: none;
 }
@@ -23,6 +24,7 @@ h1, h3 {
   text-align: center;
 }
 
+/*TODO: consolidate these three padding settings into one entry*/
 h2 {
   padding: 2%;
 }
