@@ -7,6 +7,7 @@ from .models import Movie
 # setting up the initial form for user to fill out
 class MarathonBasicsForm(forms.Form):
     """ Step 1/first form for users to fill out """
+    # TODO: Consider using a datepicker widget to make for easier and more consistent date selection.  Also is there logic to handle an accidental past date or future date too far ahead?
     startDate = forms.DateField(label='Date (YYYY-MM-DD)')
     zip = forms.CharField(label='ZIP (xxxxx)', max_length=5)
 
@@ -19,6 +20,7 @@ class MarathonMoviesForm(forms.Form):
 
 class SignUpForm(UserCreationForm):
     """ Signup form for new users to fill out """
+    # TODO: Consider adding an asterisk to the required field and not including the 'Optional' help text (clears up the view a bit)
     first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
     last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')

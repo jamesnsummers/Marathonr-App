@@ -51,6 +51,7 @@ def signup(request):
             return redirect('/home')
     else:
         form = SignUpForm()
+    # TODO: consider adding flash messages to explain to users why the signup process failed.
     return render(request, 'signup.html', {'form': form})
 
 def login_view(request):
