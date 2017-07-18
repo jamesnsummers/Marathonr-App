@@ -7,7 +7,9 @@
     <form class="col-sm-4 col-md-offset-4 col-sm-offset-4 form-one" action="form-two/" method="get">
       <h3>Step 1</h3>
       <p class="form-subtitle">Enter the date of your Marathon <br>Enter the ZIP code where you want to watch it</p>
-      <h4>{{ form }}</h4><br>
+      <!-- this works but is annoying -->
+      <h4>Date: <input type="text" id="datepicker" src="{{ form.startDate }}</h4>
+      <h4>ZIP: {{ form.zip }}</h4><br>
       <input class="submitBtn" type="submit" value="Submit" />
     </form>
   </div>
