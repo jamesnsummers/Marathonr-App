@@ -13,29 +13,18 @@ body {
   padding-bottom: 20px;
 }
 
-/*TODO: add this style to the anchor tag settings below*/
-a {
-  text-decoration: none;
-}
-
 h1, h3 {
   color: #4fc3f7;
   font-size: 6em;
   text-align: center;
 }
 
-/*TODO: consolidate these three padding settings into one entry*/
-h2 {
+h2, h3, h4 {
   padding: 2%;
 }
 
 h3 {
-  padding: 2%;
   font-size: 3em;
-}
-
-h4 {
-  padding: 2%;
 }
 
 h5 {
@@ -67,12 +56,28 @@ a:hover, h1:hover, a h3:hover {
   align: left;
 }
 
+/**************************************/
+/**************************************/
+/**************************************/
+/***********FOOTER STYLES**************/
+/**************************************/
+/**************************************/
+/**************************************/
+
 footer {
   text-align: center;
   position: absolute;
   background-color: #90a4ae;
   opacity: .9;
 }
+
+/**************************************/
+/**************************************/
+/**************************************/
+/***********HOME PAGE STYLES***********/
+/**************************************/
+/**************************************/
+/**************************************/
 
 .carousel.slide{
   margin-top: -35px;
@@ -83,6 +88,14 @@ footer {
   margin-left: 42%;
   width: 15%;
 }
+
+/**************************************/
+/**************************************/
+/**************************************/
+/***********FORMS STYLES***************/
+/**************************************/
+/**************************************/
+/**************************************/
 
 #loginAlert {
   text-align: center;
@@ -131,6 +144,23 @@ form {
   position: relative;
 }
 
+.submitBtn {
+  position: relative;
+  align-content: center;
+  font-size: 1em;
+  border-radius: 80px;
+  background-color: #90a4ae;
+  color: black;
+}
+
+/**************************************/
+/**************************************/
+/**************************************/
+/*******MARATHON RESULTS STYLES********/
+/**************************************/
+/**************************************/
+/**************************************/
+
 .marathonCard {
   border: 2px solid black;
   border-radius: 30px;
@@ -143,20 +173,15 @@ form {
   color: white;
 }
 
-h3.marathonCardText {
-
-}
+/**************************************/
+/**************************************/
+/**************************************/
+/********ABOUT PAGE STYLES*************/
+/**************************************/
+/**************************************/
+/**************************************/
 
 #techUsedList {
   text-align: center;
   color: #ff8a65;
-}
-
-.submitBtn {
-  position: relative;
-  align-content: center;
-  font-size: 1em;
-  border-radius: 80px;
-  background-color: #90a4ae;
-  color: black;
 }

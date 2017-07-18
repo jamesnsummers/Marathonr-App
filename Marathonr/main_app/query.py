@@ -5,7 +5,7 @@ from .models import Movie
 import os
 
 BASE_URL = 'http://data.tmsapi.com/v1.1/movies/showings'
-API_KEY = 'b)cy@czb#_ea#l(3qxq9f+4me^hl0f52ee)k(#yege#8x0y9=!'
+API_KEY = os.environ['MARATHONR_API_KEY']
 #Change FAKE_DATA to False to stop using pickled data
 FAKE_DATA = False
 
