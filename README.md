@@ -33,7 +33,7 @@ eval "$(pyenv init -)"```
 Add the following to `~/.bashrc` under your additions from step 2:
 ```bash
 eval "$(pyenv virtualenv-init -)"
-```*
+```
 *Install pylint for easy, on-the-fly debugging: <br>
 `pip install pylint`<br>
 You will need to install the package on your text editor as well. If you use Atom, like me:<br>
@@ -44,7 +44,7 @@ Check to see if your app is ready by viewing a bare-bones template:<br>
 `python manage.py runserver`<br><br>
 Now create the Django <b>app</b>:<br>
 `python manage.py startapp main_app`<br><br>
-Now you're ready to start coding!*
+Now you're ready to start coding!
 
 
 ## Existing Features / User Stories
